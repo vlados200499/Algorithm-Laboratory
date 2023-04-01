@@ -1,7 +1,0 @@
-﻿  Lab1.cpp
-C:\Users\Vlad\source\repos\Lab1\Lab1.cpp(124,20): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
-C:\Users\Vlad\source\repos\Lab1\Lab1.cpp(144,20): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
-C:\Users\Vlad\source\repos\Lab1\Lab1.cpp(190,27): warning C4267: аргумент: преобразование из "size_t" в "const int"; возможна потеря данных
-C:\Users\Vlad\source\repos\Lab1\Lab1.cpp(67): warning C4715: GenerateVector: значение возвращается не при всех путях выполнения
-C:\Users\Vlad\source\repos\Lab1\Lab1.cpp(183): warning C4715: GetSelected: значение возвращается не при всех путях выполнения
-  Lab1.vcxproj -> C:\Users\Vlad\source\repos\Lab1\x64\Debug\Lab1.exe
