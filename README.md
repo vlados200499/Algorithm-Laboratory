@@ -1,1 +1,1 @@
-# C-Algorithm-Laboratory
+# C++-Algorithm-Laboratory
