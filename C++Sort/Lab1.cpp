@@ -376,13 +376,13 @@ int main()
 };
 */
 
-
+/*
 int main()
 {
 
 	vector<std::pair<int, double>> time;
 
-	ofstream MyFile("C:/Users/Vlad/PycharmProjects/LAB_5/file.txt");
+	ofstream MyFile("postotxt");
 	SelectionSort_Time(time,A);
 	MyFile<<"SelectionSort"<<"\n";
 	MyFile<<"A"<<"\n";
@@ -392,4 +392,4 @@ int main()
 	}
 
 
-}
+}*/
