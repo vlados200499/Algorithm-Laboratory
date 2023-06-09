@@ -1,9 +1,11 @@
 ﻿#include <iostream>
+#include <fstream>
 #include <vector>
 #include <cstdlib>
 #include <random>
 #include <thread>
 #include <Windows.h>
+
 using namespace std;
 
 
@@ -108,6 +110,10 @@ enum InputVector
 	constante,
 	A
 };
+
+
+
+
 
 std::vector<int> GenerateVector(InputVector type, int n)
 {
@@ -216,25 +222,25 @@ void PrintTime(vector<std::pair<int, double>> v1)
 	}
 }
 
-void QuikSort_Time(vector<std::pair<int, double>>& SpeedOfSortingQuik)
+void QuikSort_Time(vector<std::pair<int, double>>& SpeedOfSortingQuik,InputVector e)
 {
-	int sizes[] = {10, 100, 500, 1000, 5000, 10000, 50000, 100000, 500000, 1000000};
+	int sizes[] = {10, 100, 500, 1000, 5000, 10000, 25000, 50000, 75000, 100000};
 	for (int siz : sizes)
 	{
-		auto v = GenerateVector(Random, siz);
+		auto v = GenerateVector(e, siz);
 		auto start = std::chrono::high_resolution_clock::now();
-		quick_sort(v, 0, siz);
+		quick_sort(v, 0, siz-1);
 		auto end = std::chrono::high_resolution_clock::now();
 		SpeedOfSortingQuik.emplace_back(siz, std::chrono::duration<double, std::milli>(end - start).count());
 	}
 }
 
-void InsertSort_Time(vector<std::pair<int, double>>& SpeedOfSortingInsert)
+void InsertSort_Time(vector<std::pair<int, double>>& SpeedOfSortingInsert,InputVector e)
 {
-	int sizes[] = {10, 100, 500, 1000, 1500, 2000, 5000, 8000, 10000, 50000, 75000, 100000};
+	int sizes[] = {10, 100, 500, 1000, 5000, 10000, 25000, 50000, 75000, 100000};
 	for (int siz : sizes)
 	{
-		auto v = GenerateVector(Random, siz);
+		auto v = GenerateVector(e, siz);
 		auto start = std::chrono::high_resolution_clock::now();
 		Insertion_Sort(v);
 		auto end = std::chrono::high_resolution_clock::now();
@@ -242,12 +248,12 @@ void InsertSort_Time(vector<std::pair<int, double>>& SpeedOfSortingInsert)
 	}
 }
 
-void SelectionSort_Time(vector<std::pair<int, double>>& SpeedOfSortingSelection)
+void SelectionSort_Time(vector<std::pair<int, double>>& SpeedOfSortingSelection,InputVector e)
 {
-	int sizes[] = {10, 100, 500, 1000, 1500, 2000, 5000, 8000, 10000, 50000, 75000, 100000};
+	int sizes[] = {10, 100, 500, 1000, 5000, 10000, 25000, 50000, 75000, 100000};
 	for (int siz : sizes)
 	{
-		auto v = GenerateVector(Random, siz);
+		auto v = GenerateVector(e, siz);
 		auto start = std::chrono::high_resolution_clock::now();
 		Selection_Sort(v);
 		auto end = std::chrono::high_resolution_clock::now();
@@ -263,7 +269,7 @@ void SelectionSort_Time(vector<std::pair<int, double>>& SpeedOfSortingSelection)
 
 
 
-
+/*
 int main()
 {
 	int SelectTask;
@@ -327,6 +333,7 @@ int main()
 
 			Selection_Case(ui);
 			break;
+		default:;
 		}
 	}
 	else
@@ -354,4 +361,35 @@ int main()
 		std::cout << "Selection sort:" << endl;
 		PrintTime(SpeedOfSortingSelection);
 	}
+}
+*/
+
+
+
+/*enum InputVector
+{
+	Random,
+	Rosn,
+	Mal,
+	constante,
+	A
+};
+*/
+
+
+int main()
+{
+
+	vector<std::pair<int, double>> time;
+
+	ofstream MyFile("C:/Users/Vlad/PycharmProjects/LAB_5/file.txt");
+	SelectionSort_Time(time,A);
+	MyFile<<"SelectionSort"<<"\n";
+	MyFile<<"A"<<"\n";
+	for (const std::pair<int, double>& element : time)
+	{
+		MyFile<<element.first<<" "<<element.second<<"\n";
+	}
+
+
 }
